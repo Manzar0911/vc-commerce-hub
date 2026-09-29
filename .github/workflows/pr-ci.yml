@@ -1,0 +1,29 @@
+# v3.800.4
+name: PR build
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ master, dev ]
+    paths-ignore:
+      - '.github/**'
+      - 'docs/**'
+      - 'build/**'
+      - 'README.md'
+      - 'LICENSE'
+      - '**/argoDeploy.json'
+
+jobs:
+  test:
+    uses: VirtoCommerce/.github/.github/workflows/test-and-sonar.yml@v3.800.4
+    secrets:
+      sonarToken: ${{ secrets.SONAR_TOKEN }}
+
+  build:
+    uses: VirtoCommerce/.github/.github/workflows/build.yml@v3.800.4
+    with:
+      uploadDocker: 'true'
+      imageName: 'storefront'
+      dockerFiles: 'https://raw.githubusercontent.com/VirtoCommerce/vc-docker/feat/net8/linux/storefront/Dockerfile'
+    secrets:
+      envPAT: ${{ secrets.REPO_TOKEN }}

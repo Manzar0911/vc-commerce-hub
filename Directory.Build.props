@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!-- These properties will be shared for all projects -->
+  <PropertyGroup>
+    <Product>VC Commerce Hub</Product>
+    <Copyright>Copyright © 2024-2026 Manzar. Built on Virto Commerce Architecture.</Copyright>
+    <Authors>Manzar</Authors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VersionPrefix>8.3.0</VersionPrefix>
+    <VersionSuffix>
+    </VersionSuffix>
+    <VersionSuffix Condition=" '$(VersionSuffix)' != '' AND '$(BuildNumber)' != '' ">$(VersionSuffix)-$(BuildNumber)</VersionSuffix>
+  </PropertyGroup>
+</Project>
